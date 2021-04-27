@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
-import { getDragon } from "./api/dragons";
+import { getDragon, GetDragonResponse } from "./api/dragons";
 import Dragon from "./components/Dragon";
 
 function App() {
-  const [dragonData, setDragonData] = useState(null);
+  const [dragonData, setDragonData] = useState<GetDragonResponse | null>(null);
   useEffect(() => {
     const fetch = async () => {
       const data = await getDragon({ id: "dragon2" });

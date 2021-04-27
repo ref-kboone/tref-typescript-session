@@ -1,16 +1,25 @@
 import React, { useState } from "react";
+import { GetDragonResponse } from "../api/dragons";
 
-const Dragon = ({ dragonData, labelButton = "Show all data" }) => {
-  const [renderAllData, setRenderAllData] = useState(false);
+type Props = {
+  dragonData: GetDragonResponse;
+  labelButton: string;
+};
 
-  const handleRenderAllButton = (e) => {
+const Dragon: React.FC<Props> = ({
+  dragonData,
+  labelButton = "Show all data",
+}) => {
+  const [renderAllData, setRenderAllData] = useState<Boolean>(false);
+
+  const handleRenderAllButton = (e: React.MouseEvent) => {
     e.preventDefault();
     alert("Button height " + e.currentTarget.clientHeight);
     const returnFromFunction = doSomething();
     console.log(returnFromFunction);
   };
 
-  const doSomething = () => {
+  const doSomething = (): "done" | "verydone" => {
     setRenderAllData(true);
     return "done";
   };
